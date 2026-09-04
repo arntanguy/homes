@@ -1,5 +1,29 @@
 check:
   image: nixpkgs/nix-flakes
+  rules:
+    - if: '$CI_PIPELINE_SOURCE != "schedule"'
   script:
     - nix flake check -L
     - nix build -L .#homeConfigurations.cpene.activationPackage
+
+update:
+  image: nixpkgs/nix-flakes
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  variables:
+    GIT_AUTHOR_NAME: "pi2 bot"
+    EMAIL: "noreply@laas.fr"
+    BRANCH: "nix-flake-update-auto"
+    REMOTE: "https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+  script:
+    - git checkout -b "$BRANCH"
+
+    - nix flake update --commit-lock-file
+
+    - git diff --quiet main && exit 0 || true
+
+    - git push
+        -o merge_request.create
+        -o merge_request.merge_when_pipeline_succeeds
+        -o merge_request.remove_source_branch
+        "$REMOTE" "$BRANCH"
