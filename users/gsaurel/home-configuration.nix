@@ -24,6 +24,7 @@
         pkgs.comma
         pkgs.deadnix
         pkgs.jq
+        pkgs.nerd-fonts.iosevka
         pkgs.ninja
         pkgs.prek
         pkgs.sccache
@@ -42,6 +43,14 @@
         DELTA_PAGER = "less -FR";
         POETRY_VIRTUALENVS_IN_PROJECT = "true";
         RUSTC_WRAPPER = lib.getExe pkgs.sccache;
+      };
+    };
+
+    fonts.fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "Iosevka Nerd Font" ];
+        sansSerif = [ "Iosevka Nerd Font" ];
       };
     };
 
