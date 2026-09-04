@@ -75,7 +75,7 @@
     };
     autoUpgrade = {
       enable = true;
-      flakeUrl = "git+https://gitlab.laas.fr/pi2/home";
+      flakeUrl = "git+https://gitlab.laas.fr/pi2/homes";
       frequency = "weekly";
       useFlake = true;
       flags = [
