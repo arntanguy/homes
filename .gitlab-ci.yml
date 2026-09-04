@@ -1,0 +1,5 @@
+check:
+  image: nixpkgs/nix-flakes
+  script:
+    - nix flake check -L
+    - nix build -L .#homeConfigurations.cpene.activationPackage
