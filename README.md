@@ -4,10 +4,12 @@ This include [home-manager](https://nix-community.github.io/home-manager/) and [
 
 ## Organisation
 
-- `users` have a `home` configuration, and can use `modules/home`
-- `hosts` have a `system` configuration, and can use `modules/system`
+- `users` have a `home` configuration, and can use `modules/home/*`
+    - a `default` user is **not yet** available: you need your directory in `users/*` and/or `hosts/.../users/*`
+- `hosts` have a `system` configuration, and can use `modules/system/*`
+    - a `default` system is available for simple cases
 
-## Pre-requisite
+## Setup
 
 <details>
 <summary>
@@ -41,8 +43,6 @@ curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable
 
 </details>
 
-## Setup
-
 ### Home setup
 
 ```
@@ -57,7 +57,7 @@ nix run git+https://gitlab.laas.fr/pi2/homes#home
 > [!note]
 > This is only required for:
 > - Graphical acceleration on Linux (eg. EGL/CUDA/… issues)
-> - Packages which require elevated priveleges (eg. electron sandbox)
+> - Packages which require elevated priveleges (eg. suid/setcap/electron sandbox/…)
 
 ```
 nix run git+https://gitlab.laas.fr/pi2/homes#system
@@ -69,21 +69,26 @@ and if you get a new hash put it in `modules/nixos/nvidia-hashes.json`.
 
 ## Development
 
+First, get `home-manager` and `system-manager` executables available:
+
 ```
 direnv allow
 ```
 
-then update your local home:
+### Home development
+
+> [!warning]
+> This will be overriden daily by `autoUpgrade`
 
 ```
 home-manager switch -b hmback --flake .
 ```
 
-and/or your local system:
+### System development
+
+> [!warning]
+> This will be overriden daily by `autoUpgrade`
 
 ```
 system-manager switch --sudo --flake .
 ```
-
-> [!warning]
-> Both will be daily overriden by `autoUpgrade`
