@@ -41,13 +41,15 @@ curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable
 
 </details>
 
-## Home setup
+## Setup
+
+### Home setup
 
 ```
 nix run git+https://gitlab.laas.fr/pi2/homes#home
 ```
 
-## System setup
+### System setup
 
 > [!warning]
 > This require sudo access
@@ -64,3 +66,24 @@ nix run git+https://gitlab.laas.fr/pi2/homes#system
 For extra nightmare, nvidia gang members also need to specify `nvidiaDriverVersion` for their host:
 follow the example in `hosts/kurai`, get yours with `nvidia-smi`,
 and if you get a new hash put it in `modules/nixos/nvidia-hashes.json`.
+
+## Development
+
+```
+direnv allow
+```
+
+then update your local home:
+
+```
+home-manager switch -b hmback --flake .
+```
+
+and/or your local system:
+
+```
+system-manager switch --sudo --flake .
+```
+
+> [!warning]
+> Both will be daily overriden by `autoUpgrade`
