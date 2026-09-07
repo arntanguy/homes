@@ -1,6 +1,6 @@
 # homes
 
-This include [home-manager](https://github.com/nix-community/home-manager/) and [system-manager](https://github.com/numtide/system-manager) nix configurations for LAAS users and hosts.
+This include [home-manager](https://nix-community.github.io/home-manager/) and [system-manager](https://system-manager.net/main/) nix configurations for LAAS users and hosts.
 
 ## Organisation
 
