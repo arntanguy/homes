@@ -7,15 +7,17 @@
 }:
 let
   inherit (pkgs) lib;
-  niri = perSystem.self.niri-session-xwayland-satellite-auth;
-  niriDesktop = pkgs.writeText "niri.desktop" ''
-    sed "s|Exec=niri-session|Exec=${lib.getExe niri}|" \
-      ${niri}/share/wayland-sessions/niri.desktop > $out
+  niri' = perSystem.self.niri-session-xwayland-satellite-auth;
+  installNiriDesktop = pkgs.writeShellScript "install-niri-desktop" ''
+    ${lib.getExe pkgs.gnused} \
+      "s|Exec=niri-session|Exec=${lib.getExe niri'}|" \
+      "${pkgs.niri}/share/wayland-sessions/niri.desktop" \
+       >      "/usr/share/wayland-sessions/niri.desktop"
   '';
 in
 {
   environment.systemPackages = [
-    niri
+    niri'
   ];
 
   systemd.services.install-niri-desktop = {
@@ -23,7 +25,7 @@ in
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${lib.getExe' pkgs.coreutils "ln"} -sf ${niriDesktop} /usr/share/wayland-sessions/niri.desktop";
+      ExecStart = installNiriDesktop;
     };
   };
 }
