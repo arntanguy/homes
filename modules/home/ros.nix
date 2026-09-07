@@ -7,11 +7,6 @@
   ...
 }:
 {
-  environment.pathsToLink = [
-    "/share/bash-completion"
-    "/share/fish/vendor_completions.d"
-  ];
-
   home = {
     packages = [
       pkgs.python3Packages.argcomplete
