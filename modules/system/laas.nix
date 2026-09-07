@@ -2,7 +2,6 @@
   inputs,
   lib,
   perSystem,
-  pkgs,
   ...
 }:
 {
@@ -12,25 +11,9 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  environment = {
-    etc =
-      let
-        name = "90laas-nix-path.sh";
-      in
-      {
-        "profile.d/${name}".source = pkgs.writeText name ''
-          for d in /run/system-manager/sw/bin $HOME/.nix-profile/bin; do
-            if [[ -d $d && ":$PATH:" != *":$d:"* ]]; then
-                export PATH="$d:$PATH"
-            fi
-          done
-        '';
-      };
-
-    systemPackages = [
-      perSystem.self.element-desktop-wrapped-suid
-    ];
-  };
+  environment.systemPackages = [
+    perSystem.self.element-desktop-wrapped-suid
+  ];
 
   security.wrappers =
     let
