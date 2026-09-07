@@ -12,7 +12,7 @@ This include [home-manager](https://github.com/nix-community/home-manager/) conf
 <details>
 <summary>
 
-### If you don't already have nix, click here
+### If you don't already have nix: click here
 
 </summary>
 
@@ -42,19 +42,22 @@ curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable
 </details>
 
 ```
-nix run home-manager -- switch -b hmback --flake git+https://gitlab.laas.fr/pi2/homes
+nix run git+https://gitlab.laas.fr/pi2/homes
 ```
 
 
 <details>
 <summary>
 
-### Graphical acceleration on Linux (EGL, CUDA, etc.)
+### Graphical acceleration on Linux (EGL/CUDA/… issues): click here
 
 </summary>
 
+> [!warning]
+> This require sudo access
+
 ```
-nix run github:numtide/system-manager -- switch --sudo --flake git+https://gitlab.laas.fr/pi2/homes
+nix run git+https://gitlab.laas.fr/pi2/homes#system
 ```
 
 For extra nightmare, nvidia gang members also need to specify `nvidiaDriverVersion` for their host:

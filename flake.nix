@@ -19,8 +19,6 @@
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.userborn.inputs.systems.follows = "systems";
     };
 
     nix-system-graphics = {
