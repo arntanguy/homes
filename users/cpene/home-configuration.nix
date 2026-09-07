@@ -1,11 +1,11 @@
 {
-  inputs,
+  flake,
   ...
 }:
 {
   imports = [
-    inputs.self.homeModules.laas
-    inputs.self.homeModules.ros
+    flake.modules.home.laas
+    flake.modules.home.ros
   ];
 
   config = {

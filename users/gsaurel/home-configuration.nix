@@ -2,15 +2,15 @@
 # The real one is at https://github.com/nim65s/dotfiles/tree/main/home/nim
 {
   config,
+  flake,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 {
   imports = [
-    inputs.self.homeModules.laas
-    inputs.self.homeModules.ros
+    flake.modules.home.laas
+    flake.modules.home.ros
   ];
 
   config = {

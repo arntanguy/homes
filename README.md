@@ -2,6 +2,11 @@
 
 This include [home-manager](https://github.com/nix-community/home-manager/) configurations for LAAS members.
 
+## Organisation
+
+- `users` have a `home` configuration, and can use `modules/home`
+- `hosts` have a `system` configuration, and can use `modules/system`
+
 ## Setup
 
 <details>
@@ -39,3 +44,20 @@ curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable
 ```
 nix run home-manager -- switch -b hmback --flake git+https://gitlab.laas.fr/pi2/homes
 ```
+
+
+<details>
+<summary>
+
+### Graphical acceleration on Linux (EGL, CUDA, etc.)
+
+</summary>
+
+```
+nix run github:numtide/system-manager -- switch --sudo --flake git+https://gitlab.laas.fr/pi2/homes
+```
+
+For extra nightmare, nvidia gang members also need to specify `nvidiaDriverVersion` for their host:
+follow the example in `hosts/kurai`, and if you get a new hash put it in `modules/nixos/nvidia-hashes.json`.
+
+</details>

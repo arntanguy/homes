@@ -1,4 +1,5 @@
 {
+  perSystem,
   pkgs,
   ...
 }:
@@ -21,7 +22,7 @@
 
     element-desktop = {
       enable = true;
-      package = null; # use suid wrapped one from system-manager
+      package = perSystem.self.element-desktop-wrapped-suid;
       settings = {
         default_server_config."m.homeserver" = {
           base_url = "https://matrix.laas.fr";
@@ -69,7 +70,7 @@
   services.home-manager = {
     autoExpire = {
       enable = true;
-      frequency = "weekly";
+      frequency = "daily";
       store.cleanup = true;
       store.options = "--delete-older-than 30d";
     };
