@@ -9,7 +9,14 @@
   };
 
   programs = {
-    bash.enable = true;
+    bash = {
+      enable = true;
+      profileExtra = ''
+        if [ -f "~/.nix-profile/etc/profile.d/nix.sh" ]; then
+          . "~/.nix-profile/etc/profile.d/nix.sh"
+        fi
+      '';
+    };
 
     bat.enable = true;
 
