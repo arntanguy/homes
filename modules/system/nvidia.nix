@@ -1,3 +1,5 @@
+# Nix need to know what is the current driver version on an host
+# ref: https://github.com/soupglasses/nix-system-graphics
 {
   config,
   lib,
