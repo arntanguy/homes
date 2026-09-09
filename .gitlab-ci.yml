@@ -16,7 +16,7 @@ update:
     BRANCH: "nix-flake-update-auto"
     REMOTE: "https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
   script:
-    - git checkout -b "$BRANCH"
+    - git checkout -B "$BRANCH"
 
     - nix flake update --commit-lock-file
 
