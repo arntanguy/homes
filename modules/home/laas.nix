@@ -12,9 +12,12 @@
     bash = {
       enable = true;
       profileExtra = ''
-        if [ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-          . "$HOME/.nix-profile/etc/profile.d/nix.sh"
-        fi
+        for _p in "/run/system-manager/sw/bin" "$HOME/.nix-profile/bin"; do
+          case ":$PATH:" in
+            *":$_p:"*) ;;
+            *) export PATH="$_p:$PATH" ;;
+          esac
+        done
       '';
     };
 
