@@ -8,5 +8,5 @@
     flake.modules.system.nvidia
   ];
 
-  nvidiaDriverVersion = "575.64.03";
+  nvidiaDriverVersion = "595.84";
 }
