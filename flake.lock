@@ -174,7 +174,8 @@
         "nix-system-graphics": "nix-system-graphics",
         "nixpkgs": "nixpkgs",
         "system-manager": "system-manager",
-        "systems": "systems_2"
+        "systems": "systems_2",
+        "treefmt": "treefmt"
       }
     },
     "system-manager": {
@@ -226,6 +227,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "treefmt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786901030,
+        "narHash": "sha256-WSFCsDSE5ffgD2MqzkM2CYjeFiKhRF/dJUN8uedb6YE=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "27b3b12a8e6375f28ebe122f07d230ca5459bbfa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
         "type": "github"
       }
     },
