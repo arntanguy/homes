@@ -63,9 +63,8 @@ nix run git+https://gitlab.laas.fr/pi2/homes#home
 nix run git+https://gitlab.laas.fr/pi2/homes#system
 ```
 
-For extra nightmare, nvidia gang members also need to specify `nvidiaDriverVersion` for their host:
-follow the example in `hosts/kurai`, get yours with `nvidia-smi`,
-and if you get a new hash put it in `modules/nixos/nvidia-hashes.json`.
+For extra nightmare, nvidia gang members also need to specify nvidia driver version for their host:
+`./modules/system/nvidia-update.sh`
 
 ## Development
 
