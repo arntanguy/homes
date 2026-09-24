@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p jq nurl
+#!nix-shell -i bash -p jq nurl yq
 # shellcheck shell=bash
 
 set -euo pipefail
@@ -10,7 +10,12 @@ tmp="$(mktemp)"
 update() {
     HOST="$1"
 
-    xml="$(ssh "$HOST" nvidia-smi -q -x || true)"
+    if [ "$HOST" == "$(hostname)" ]
+    then
+        xml="$(nvidia-smi -q -x || true)"
+    else
+        xml="$(ssh "$HOST" nvidia-smi -q -x || true)"
+    fi
     test -n "$xml" || return 0
 
     if [[ "$xml" == "NVIDIA-SMI has failed"* ]]
@@ -36,6 +41,9 @@ update() {
 }
 
 if [ "$#" -eq "0" ]
+then
+    update "$(hostname)"
+elif [ "$1" == "all" ]
 then
     HOSTS=$(jq -r keys[] "${dir}/nvidia-hosts.json")
     for host in $HOSTS
