@@ -1,5 +1,6 @@
 {
   flake,
+  pkgs,
   ...
 }:
 {
@@ -8,8 +9,10 @@
     flake.modules.home.ros
   ];
 
-  config = {
-    programs.kitty.enable = true;
-    programs.starship.enable = true;
-  };
+  home.packages = [
+    pkgs.kitty
+  ];
+
+  # programs.kitty.enable = true; TODO
+  programs.starship.enable = true;
 }
