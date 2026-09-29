@@ -1,6 +1,6 @@
 {
   flake,
-  pkgs,
+  perSystem,
   ...
 }:
 {
@@ -9,6 +9,6 @@
   ];
 
   home.packages = [
-    pkgs.rstudio
+    perSystem.self.rstudio-wrapped-suid
   ];
 }
