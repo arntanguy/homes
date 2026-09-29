@@ -17,7 +17,7 @@
 
   security.wrappers =
     let
-      inherit (perSystem.self.element-desktop-wrapped-suid) electron sandboxExecutableName;
+      inherit (perSystem.self.electron-wrapped-suid) electron sandboxExecutableName;
     in
     {
       ${sandboxExecutableName} = {
