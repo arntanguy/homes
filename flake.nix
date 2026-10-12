@@ -2,8 +2,8 @@
   description = "home-manager configurations for LAAS members";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
-    systems.url = "github:nix-systems/default/refs/pull/3/merge";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
+    systems.url = "github:nix-systems/default";
 
     blueprint = {
       url = "github:numtide/blueprint/refs/pull/161/merge";

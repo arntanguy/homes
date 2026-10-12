@@ -16,9 +16,6 @@ pkgs.stdenvNoCC.mkDerivation {
       ${lib.getExe pkgs.element-desktop} > $out/bin/element-desktop
     chmod +x $out/bin/element-desktop
   '';
+  passthru = { inherit electron; };
   meta.mainProgram = "element-desktop";
-  passthru = {
-    inherit electron;
-    inherit (electron) sandboxExecutableName;
-  };
 }

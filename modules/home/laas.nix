@@ -9,17 +9,7 @@
   };
 
   programs = {
-    bash = {
-      enable = true;
-      profileExtra = ''
-        for _p in "/run/system-manager/sw/bin" "$HOME/.nix-profile/bin"; do
-          case ":$PATH:" in
-            *":$_p:"*) ;;
-            *) export PATH="$_p:$PATH" ;;
-          esac
-        done
-      '';
-    };
+    bash.enable = true;
 
     bat.enable = true;
 
@@ -95,4 +85,6 @@
       ];
     };
   };
+
+  targets.genericLinux.enable = true;
 }
