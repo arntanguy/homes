@@ -235,12 +235,12 @@
 
   services.gpg-agent = {
     enable = true;
-    pinentry.package = pkgs.pinentry-gnome3;  # or pkgs.pinentry-gnome3 / pinentry-qt for a GUI popup
-    defaultCacheTtl = 86400;   # seconds; cache passphrase for a day
+    pinentry.package = pkgs.pinentry-gnome3; # or pkgs.pinentry-gnome3 / pinentry-qt for a GUI popup
+    defaultCacheTtl = 86400; # seconds; cache passphrase for a day
     maxCacheTtl = 86400;
   };
 
-    # pass itself
+  # pass itself
   programs.password-store = {
     enable = true;
     settings.PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.password-store";
@@ -255,7 +255,7 @@
     passwordCommand = "pass show email/ostasse@laas.fr";
 
     imap = {
-      host = "imap.laas.fr";   # replace with your actual IMAP host
+      host = "imap.laas.fr"; # replace with your actual IMAP host
       port = 993;
       tls.enable = true;
     };
@@ -292,20 +292,24 @@
     # ... your existing primary/address/userName/passwordCommand/imap settings stay as-is
 
     smtp = {
-      host = "smtp.laas.fr";   # check your actual SMTP host — likely in Thunderbird's Server Settings > Outgoing Server
-      port = 465;               # 587 (STARTTLS) is most common; some servers use 465 (implicit TLS, like IMAP's 993)
+      host = "smtp.laas.fr"; # check your actual SMTP host — likely in Thunderbird's Server Settings > Outgoing Server
+      port = 465; # 587 (STARTTLS) is most common; some servers use 465 (implicit TLS, like IMAP's 993)
       tls.enable = true;
       # tls.useStartTls = true;  # uncomment if port 587/STARTTLS rather than 465/implicit
     };
 
     msmtp.enable = true;
   };
-  
+
   programs.msmtp.enable = true;
   programs.mbsync.enable = true;
   programs.notmuch = {
     enable = true;
-    search.excludeTags = [ "deleted" "delete" "spam"];
-  };  
+    search.excludeTags = [
+      "deleted"
+      "delete"
+      "spam"
+    ];
+  };
 
 }

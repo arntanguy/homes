@@ -23,7 +23,7 @@ update:
     - git diff --quiet main && exit 0 || true
 
     - git push
-        -o merge_request.create
-        -o merge_request.merge_when_pipeline_succeeds
-        -o merge_request.remove_source_branch
-        "$REMOTE" "$BRANCH"
+      -o merge_request.create
+      -o merge_request.merge_when_pipeline_succeeds
+      -o merge_request.remove_source_branch
+      "$REMOTE" "$BRANCH"

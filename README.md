@@ -5,9 +5,9 @@ This include [home-manager](https://nix-community.github.io/home-manager/) and [
 ## Organisation
 
 - `users` have a `home` configuration, and can use `modules/home/*`
-    - a `default` user is **not yet** available: you need your directory in `users/*` and/or `hosts/.../users/*`
+  - a `default` user is **not yet** available: you need your directory in `users/*` and/or `hosts/.../users/*`
 - `hosts` have a `system` configuration, and can use `modules/system/*`
-    - a `default` system is available for simple cases
+  - a `default` system is available for simple cases
 
 ## Setup
 
@@ -56,6 +56,7 @@ nix run git+https://gitlab.laas.fr/pi2/homes#home
 
 > [!note]
 > This is only required for:
+>
 > - Graphical acceleration on Linux (eg. EGL/CUDA/… issues)
 > - Packages which require elevated priveleges (eg. suid/setcap/electron sandbox/…)
 
