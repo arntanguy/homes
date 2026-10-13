@@ -30,11 +30,28 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nvim-wrapper-arnaud = {
+      url = "github:arntanguy/nvim-wrapper";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.wrappers.inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs:
     inputs.blueprint {
       inherit inputs;
+      # Pass custom extraSpecialArgs or configure nixpkgs globally for home-manager if supported by your layout,
+      # or configure allowUnfreePredicate inside your specific home modules (e.g. homes/arnaud/default.nix or similar).
+      # Below is an example of passing extraSpecialArgs to home-manager via blueprint if applicable:
+      nixpkgs.config = {
+        allowUnfree = false;
+        allowUnfreePredicate =
+          pkg:
+          builtins.elem (inputs.nixpkgs.lib.getName pkg) [
+            "copilot-language-server"
+          ];
+      };
     };
 }

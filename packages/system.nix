@@ -14,6 +14,6 @@ pkgs.stdenvNoCC.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     makeWrapper ${lib.getExe system-manager} $out/bin/system-manager \
-      --add-flags "switch --sudo --flake git+https://gitlab.laas.fr/pi2/homes"
+      --add-flags "switch --sudo --flake path:/home/arnaud/devel/laas/pi2/homes"
   '';
 }

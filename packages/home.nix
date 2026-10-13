@@ -14,6 +14,6 @@ pkgs.stdenvNoCC.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     makeWrapper ${lib.getExe home-manager} $out/bin/home-manager \
-      --add-flags "switch -b hmback --flake git+https://gitlab.laas.fr/pi2/homes"
+      --add-flags "switch -b hmback --flake path:/home/arnaud/devel/laas/pi2/homes"
   '';
 }
