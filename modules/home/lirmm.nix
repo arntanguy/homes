@@ -34,6 +34,7 @@
     ssh = {
       enable = true;
       enableDefaultConfig = false; # deprecated opinionatied settings from home-manager
+
       # settings = {
       #   # https://intranet.laas.fr/fr/catalogue-des-services/utilisation-de-ssh-sous-linux/
       #   "*" = {

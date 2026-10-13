@@ -3,8 +3,7 @@
   ...
 }:
 {
-  imports = builtins.trace "using host ar-rob-xmg" [
-    # flake.modules.system.laas
+  imports = [
     flake.modules.system.lirmm
     flake.modules.system.niri
   ];

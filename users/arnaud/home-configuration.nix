@@ -1,5 +1,4 @@
 # NB: this is a light version, used on shared computers
-# The real one is at https://github.com/nim65s/dotfiles/tree/main/home/nim
 {
   config,
   lib,
@@ -8,14 +7,19 @@
   flake,
   ...
 }:
+let
+  pubkeySource = ./yubikey-gpg.pub;
+in
 {
   imports = [
     flake.modules.home.lirmm
     inputs.nvim-wrapper-arnaud.homeModules.neovim
+    flake.modules.home.yubikey
   ];
   config = {
-    # wrappers.neovim.enable = true;
     home = {
+      file.".ssh/yubikey.pub".source = pubkeySource;
+
       stateVersion = "26.11";
       keyboard = {
         layout = "fr";
@@ -31,6 +35,7 @@
         ninja
         prek
         ccache
+        nurl
       ];
 
       sessionVariables = {
@@ -55,6 +60,15 @@
     programs = {
       lazygit = {
         enable = true;
+        settings = {
+          git = {
+            # If true, do not spawn a separate process when using GPG
+            overrideGpg = true;
+            autoFetch = false;
+            autoRefresh = false;
+          };
+        };
+
       };
       kitty = {
         enable = true;
@@ -147,6 +161,11 @@
         ];
       };
       git.settings = {
+        # GPG signing.
+        commit.gpgSign = true;
+        # Use SSH instead of HTTPS for GitHub
+        url."git@github.com:".insteadOf = "https://github.com/";
+
         branch = {
           autoSetupRebase = "always";
           sort = "-committerdate";
@@ -172,6 +191,8 @@
           {
             name = lib.concatStringsSep " " me;
             email = "arn.tanguy@gmail.com";
+            # Export the corresponding public key with gpg --armor --export 5888959633A5715A > yubikey.pub
+            signingKey = "64DF9BCBF1C4E40520C8F7C22B2888B308742120";
           };
       };
     };
