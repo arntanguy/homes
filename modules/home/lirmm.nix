@@ -1,4 +1,5 @@
 {
+  perSystem,
   ...
 }:
 {
@@ -20,6 +21,7 @@
 
     element-desktop = {
       enable = true;
+      package = perSystem.self.element-desktop-wrapped-suid;
     };
 
     fd.enable = true;
