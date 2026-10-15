@@ -17,7 +17,7 @@
     programs.ssh = {
       matchBlocks = {
         "*" = {
-          identityFile = "~/.ssh/yubikey.pub";
+          identityFile = "~/.ssh/yubikey-arnaud.pub";
           extraOptions = {
             AddKeysToAgent = "yes";
             # Permet d'accepter et d'enregistrer automatiquement la nouvelle empreinte du serveur sans demander confirmation

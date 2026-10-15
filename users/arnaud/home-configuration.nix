@@ -18,7 +18,8 @@ in
   ];
   config = {
     home = {
-      file.".ssh/yubikey.pub".source = pubkeySource;
+      # FIXME import with gpg2 --import ~/.ssh/yubikey-arnaud.pub
+      file.".ssh/yubikey-arnaud.pub".source = pubkeySource;
 
       stateVersion = "26.11";
       keyboard = {
@@ -191,7 +192,7 @@ in
           {
             name = lib.concatStringsSep " " me;
             email = "arn.tanguy@gmail.com";
-            # Export the corresponding public key with gpg --armor --export 5888959633A5715A > yubikey.pub
+            # Export the corresponding public key with gpg --armor --export 5888959633A5715A > yubikey-arnaud.pub
             signingKey = "64DF9BCBF1C4E40520C8F7C22B2888B308742120";
           };
       };
