@@ -51,6 +51,8 @@
           pkg:
           builtins.elem (inputs.nixpkgs.lib.getName pkg) [
             "copilot-language-server"
+            "vscode"
+            "vscode-extension-ms-vscode-remote-remote-containers"
           ];
       };
     };
